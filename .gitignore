@@ -1,0 +1,20 @@
+# Gradle / build output (all modules)
+.gradle/
+build/
+.kotlin/
+.externalNativeBuild
+.cxx
+/captures
+
+# Local configuration and secrets (holds TMDB_API_KEY)
+local.properties
+*.jks
+*.keystore
+
+# IDE
+*.iml
+.idea/
+.vscode/
+
+# OS
+.DS_Store

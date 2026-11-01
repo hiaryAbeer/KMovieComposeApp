@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">KMovie</string>
+    <string name="trending">Trending</string>
+    <string name="browse_by_genre">Browse by genre</string>
+    <string name="cast">Cast</string>
+    <string name="overview">Overview</string>
+    <string name="retry">Retry</string>
+    <string name="back">Back</string>
+    <string name="rating">★ %1$.1f</string>
+    <string name="runtime_minutes">%1$d min</string>
+    <string name="no_movies">No movies found</string>
+    <string name="error_network">No internet connection. Check your connection and try again.</string>
+    <string name="error_unauthorized">The TMDB API key is missing or invalid. See the README for setup.</string>
+    <string name="error_not_found">This movie could not be found.</string>
+    <string name="error_unknown">Something went wrong. Please try again.</string>
+</resources>
