@@ -9,20 +9,23 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-/** TMDB v3 endpoints. The API key is added by [ApiKeyInterceptor]. */
+/** TMDB v3 endpoints (see [TmdbEndpoints]). The API key is added by [ApiKeyInterceptor]. */
 interface TmdbApi {
-    @GET("trending/movie/day")
+    @GET(TmdbEndpoints.TRENDING_MOVIES)
     suspend fun getTrendingMovies(): PagedResponseDto<MovieDto>
 
-    @GET("genre/movie/list")
+    @GET(TmdbEndpoints.MOVIE_GENRES)
     suspend fun getGenres(): GenresResponseDto
 
-    @GET("discover/movie")
-    suspend fun discoverMovies(@Query("with_genres") genreId: Int, @Query("page") page: Int): PagedResponseDto<MovieDto>
+    @GET(TmdbEndpoints.DISCOVER_MOVIES)
+    suspend fun discoverMovies(
+        @Query(TmdbEndpoints.Query.WITH_GENRES) genreId: Int,
+        @Query(TmdbEndpoints.Query.PAGE) page: Int
+    ): PagedResponseDto<MovieDto>
 
-    @GET("movie/{movieId}")
-    suspend fun getMovieDetails(@Path("movieId") movieId: Long): MovieDetailsDto
+    @GET(TmdbEndpoints.MOVIE_DETAILS)
+    suspend fun getMovieDetails(@Path(TmdbEndpoints.Path.MOVIE_ID) movieId: Long): MovieDetailsDto
 
-    @GET("movie/{movieId}/credits")
-    suspend fun getCredits(@Path("movieId") movieId: Long): CreditsResponseDto
+    @GET(TmdbEndpoints.MOVIE_CREDITS)
+    suspend fun getCredits(@Path(TmdbEndpoints.Path.MOVIE_ID) movieId: Long): CreditsResponseDto
 }

@@ -3,6 +3,7 @@ package com.abeerapps.kmoviecomposeapp.di
 import com.abeerapps.kmoviecomposeapp.BuildConfig
 import com.abeerapps.kmoviecomposeapp.data.remote.ApiKeyInterceptor
 import com.abeerapps.kmoviecomposeapp.data.remote.TmdbApi
+import com.abeerapps.kmoviecomposeapp.data.remote.TmdbEndpoints
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,10 +18,19 @@ import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
 import timber.log.Timber
 
+/**
+ * Hilt scopes determine how long a dependency lives and where it can be injected inside the app
+ *
+ *. By default, Hilt bindings are unscoped (meaning a new instance is created every time it is requested).
+ *  When you add a scope annotation, Hilt shares a single instance of that object throughout the matching
+ *  component's lifecycle.
+ *
+ * @Module is a class used to provide dependencies that cannot be constructor-injected.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-    private val API_KEY_IN_URL = Regex("(${ApiKeyInterceptor.QUERY_PARAM})=[^&\\s]+")
+    private val API_KEY_IN_URL = Regex("(${TmdbEndpoints.Query.API_KEY})=[^&\\s]+")
 
     @Provides
     @Singleton

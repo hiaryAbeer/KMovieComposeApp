@@ -10,12 +10,8 @@ class ApiKeyInterceptor(private val apiKey: String) : Interceptor {
         val url =
             request.url
                 .newBuilder()
-                .addQueryParameter(QUERY_PARAM, apiKey)
+                .addQueryParameter(TmdbEndpoints.Query.API_KEY, apiKey)
                 .build()
         return chain.proceed(request.newBuilder().url(url).build())
-    }
-
-    companion object {
-        const val QUERY_PARAM = "api_key"
     }
 }
